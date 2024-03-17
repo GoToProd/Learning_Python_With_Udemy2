@@ -9,17 +9,16 @@ def index(request):
         'title': 'Store',
         'is_promoution': True,
     }
-    
     return render(request, 'products/index.html', context)
 
 
-def products(request):
-    context = {
-        'title': 'Store - Каталог',
-        'products': Product.objects.all(),
-        'categories': ProductCategory.objects.all(),
-    }
+def products(request, category_id=None):
     
+    context = {
+        'title': 'Store - Каталог', 
+        'categories': ProductCategory.objects.all(),
+        'products': Product.objects.filter(category_id=category_id) if category_id else Product.objects.all()
+        }
     return render(request, 'products/products.html', context)
 
 @login_required
