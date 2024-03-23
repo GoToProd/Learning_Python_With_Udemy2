@@ -136,3 +136,6 @@ DEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField'
 #users service 
 AUTH_USER_MODEL = 'users.User'
 LOGIN_URL='/users/login/'
+
+#Sending email notification
+BACKEND_EMAIL = 'django.core.mail.backends.console.EmailBackend'
