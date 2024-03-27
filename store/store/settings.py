@@ -28,6 +28,8 @@ DEBUG = True
 ALLOWED_HOSTS = ['*']
 
 
+DOMAIN_NAME = 'http://localhost8000'
+
 # Application definition
 
 INSTALLED_APPS = [
@@ -66,6 +68,8 @@ TEMPLATES = [
                 'django.template.context_processors.request',
                 'django.contrib.auth.context_processors.auth',
                 'django.contrib.messages.context_processors.messages',
+                
+                'products.context_processors.baskets',
             ],
         },
     },
@@ -135,7 +139,16 @@ DEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField'
 
 #users service 
 AUTH_USER_MODEL = 'users.User'
-LOGIN_URL='/users/login/'
+LOGIN_URL = '/users/login/'
+LOGIN_REDIRECT_URL = '/'
+LOGOUT_REDIRECT_URL = '/'
 
-#Sending email notification
+#Sending email notification in console
 BACKEND_EMAIL = 'django.core.mail.backends.console.EmailBackend'
+
+# Production ethernet email notification from yandex 
+# EMAIL_HOST = 'smtp.yandex.com'
+# EMAIL_PORT = 465
+# EMAIL_HOST_USER = 'name of account yandex'
+# EMAIL_HOST_PASSWORD = 'password of account yandex'
+# EMAIL_USE_SSL = True
