@@ -1,15 +1,11 @@
-from django.http import HttpResponse
 from django.shortcuts import render, HttpResponseRedirect
-from django.contrib import auth, messages
 from django.urls import reverse, reverse_lazy
-from django.contrib.auth.decorators import login_required
 from django.views.generic.edit import CreateView, UpdateView
 from django.contrib.auth.views import LoginView, LogoutView
 from django.contrib.messages.views import SuccessMessageMixin
 from django.views.generic.base import TemplateView
 
 from users.forms import UserLoginForm, UserRegistrationForm, UserProfileForm
-from products.models import Basket
 from users.models import User, EmailVerification
 from common.views import TitleMixin
 
@@ -26,7 +22,7 @@ class UserRegistrationView(TitleMixin, SuccessMessageMixin, CreateView):
     template_name = 'users/registration.html'
     success_url = reverse_lazy('users:login')
     success_message = 'Вы успешно зарегистрировались!'
-    title = 'Store - Регистирация'
+    title = 'Store - Регистрация'
 
 
 class UserProfileView(TitleMixin, UpdateView):

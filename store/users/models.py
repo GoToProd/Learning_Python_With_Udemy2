@@ -25,12 +25,12 @@ class EmailVerification(models.Model):
         verification_link = f'{settings.DOMAIN_NAME}{link}'
         subject = f'Подтверждение учетной записи для {self.user.username}'
         message = 'Для подтверждения учетной записи для {} перейдите по ссылке: {}'.format(self.user.email, verification_link)
-        send_mail(
-            subject=subject,
-            message = message,
-            from_email = 'settings.EMAIL_HOST_USER',
-            receptien_link=['self.user.email'],
-            fail_silently=False
-            )
+        # send_mail(
+            # subject=subject,
+            # message = message,
+            # from_email = 'settings.EMAIL_HOST_USER',
+            # receptien_link=['self.user.email'],
+            # fail_silently=False
+            # )
     def is_expired(self):
         return True if now() >= self.expiration else False
