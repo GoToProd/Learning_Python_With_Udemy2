@@ -28,7 +28,7 @@ DEBUG = True
 ALLOWED_HOSTS = ['*']
 
 
-DOMAIN_NAME = 'http://localhost:8000'
+DOMAIN_NAME = 'http://127.0.0.1:8000'
 
 # Application definition
 
@@ -39,6 +39,7 @@ INSTALLED_APPS = [
     'django.contrib.sessions',
     'django.contrib.messages',
     'django.contrib.staticfiles',
+    'django.contrib.humanize',
     
     'allauth',
     'allauth.account',
@@ -201,6 +202,11 @@ SOCIALACCOUNT_PROVIDERS = {
 
 
 #Celery 
-
 CELERY_BROKER_URL = 'redis://127.0.0.1:6379'
 CELERY_RESULT_BACKEND = 'redis://127.0.0.1:6379'
+
+
+#Stripe - payment system
+# STRIPE_PUBLICK_KEY = 'key'
+# STRIPE_SECRET_KEY = 'secret'
+# STRIPE_WEBHOOK_SECRET = 'secret2'

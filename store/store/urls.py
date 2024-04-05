@@ -20,6 +20,7 @@ from django.conf.urls.static import static
 from django.conf import settings
 
 from products.views import IndexView
+# from orders.views import stipe_webhook_view
 
 urlpatterns = [
     path('admin/', admin.site.urls),
@@ -28,6 +29,7 @@ urlpatterns = [
     path('users/', include('users.urls', namespace='users')),
     path('accounts/', include('allauth.urls')),
     path('orders/', include('orders.urls', namespace='orders')),
+    # path('webhook/stripe/', stipe_webhook_view, namespace='stripe_webhook'),
 ]
 
 if settings.DEBUG:

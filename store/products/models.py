@@ -1,7 +1,7 @@
 from django.db import models
+from django.conf import settings
 
 from users.models import User
-
 
 class ProductCategory(models.Model):
     name = models.CharField(max_length=128)
@@ -36,6 +36,7 @@ class BasketQuerySet(models.QuerySet):
 
     def total_quantity(self):
             return sum(basket.quantity for basket in self)
+        
 
 class Basket(models.Model):
     user = models.ForeignKey(to=User, on_delete=models.CASCADE)
@@ -51,3 +52,11 @@ class Basket(models.Model):
     def sum(self):
         return self.product.price * self.quantity
     
+    def de_json(self):
+        basket_item = {
+            'product_name': self.product.name,
+            'quantity': self.quantity,
+            'price': float(self.product.price),
+            'sum': float(self.sum()),
+        }
+        return basket_item

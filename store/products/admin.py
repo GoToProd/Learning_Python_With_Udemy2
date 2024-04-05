@@ -5,6 +5,7 @@ from products.models import Product, ProductCategory, Basket
 
 
 admin.site.register(ProductCategory)
+admin.site.register(Basket)
 
 @admin.register(Product)
 class ProductAdmin(admin.ModelAdmin):
